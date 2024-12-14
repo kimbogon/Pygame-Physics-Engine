@@ -3,13 +3,12 @@ import math
 import random
 import numpy as np
 
-
 pygame.init()
 
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('2D Transform')
+pygame.display.set_caption('2D Object Transform')
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -88,6 +87,7 @@ class Object:
     def rotate(self, event):
         # update self.points, self.rotation_angle
         # move the object to origin -> rotate -> move the object to previous position
+
         origin_matrix = np.array([[1, 0, -self.x], [0, 1, -self.y], [0, 0, 1]])
         inverse_origin_matrix = np.array([[1, 0, self.x], [0, 1, self.y], [0, 0, 1]])
 
@@ -110,6 +110,7 @@ class Object:
     def scale(self, event):
         # update self.points, self.xscale, self.yscale
         # move the object to origin -> rotate the object to 0 -> scaling -> rotate the object to previous angle -> move the object to previous position
+        
         rad = self.rotation_angle * math.pi / 180
         origin_matrix = np.array([[math.cos(-rad), -math.sin(-rad), -self.x * math.cos(-rad) + self.y * math.sin(-rad)],
                                    [math.sin(-rad), math.cos(-rad), -self.x * math.sin(-rad) -self.y * math.cos(-rad)],

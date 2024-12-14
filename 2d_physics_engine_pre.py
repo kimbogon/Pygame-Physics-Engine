@@ -44,14 +44,17 @@ class Object:
             translate_matrix = np.array([[1, 0, 10], [0, 1, 0], [0, 0, 1]])
             for i in range(len(self.points)): 
                 self.points[i] = affine_transform(self.points[i], translate_matrix) 
+
         if event.key == pygame.K_LEFT:
             translate_matrix = np.array([[1, 0, -10], [0, 1, 0], [0, 0, 1]])
             for i in range(len(self.points)): 
                 self.points[i] = affine_transform(self.points[i], translate_matrix) 
+
         if event.key == pygame.K_UP:
             translate_matrix = np.array([[1, 0, 0], [0, 1, -10], [0, 0, 1]])
             for i in range(len(self.points)): 
                 self.points[i] = affine_transform(self.points[i], translate_matrix) 
+
         if event.key == pygame.K_DOWN:
             translate_matrix = np.array([[1, 0, 0], [0, 1, 10], [0, 0, 1]])
             for i in range(len(self.points)): 
@@ -62,6 +65,7 @@ class Object:
             rotate_matrix = np.array([[math.cos(math.pi / 18), -math.sin(math.pi / 18)], [math.sin(math.pi / 18), math.cos(math.pi / 18)]])
             for i in range(len(self.points)): 
                 self.points[i] = transform(self.points[i], rotate_matrix)
+
         if event.key == pygame.K_LEFT:
             rotate_matrix = np.array([[math.cos(-math.pi / 18), -math.sin(-math.pi / 18)], [math.sin(-math.pi / 18), math.cos(-math.pi / 18)]])
             for i in range(len(self.points)): 
@@ -69,19 +73,22 @@ class Object:
 
     def scale(self, event):
         if event.key == pygame.K_RIGHT:
-            scale_matrix = np.array([[11 / 10, 0], [0, 1]])
+            scale_matrix = np.array([[3/2, 0], [0, 1]])
             for i in range(len(self.points)): 
                 self.points[i] = transform(self.points[i], scale_matrix) 
+
         if event.key == pygame.K_LEFT:
-            scale_matrix = np.array([[10 / 11, 0], [0, 1]])
+            scale_matrix = np.array([[2/3, 0], [0, 1]])
             for i in range(len(self.points)): 
                 self.points[i] = transform(self.points[i], scale_matrix) 
+
         if event.key == pygame.K_UP:
-            scale_matrix = np.array([[1, 0], [0, 11 / 10]])
+            scale_matrix = np.array([[1, 0], [0, 3/2]])
             for i in range(len(self.points)): 
                 self.points[i] = transform(self.points[i], scale_matrix) 
+                
         if event.key == pygame.K_DOWN:
-            scale_matrix = np.array([[1, 0], [0, 10 / 11]])
+            scale_matrix = np.array([[1, 0], [0, 2/3]])
             for i in range(len(self.points)): 
                 self.points[i] = transform(self.points[i], scale_matrix)
 
